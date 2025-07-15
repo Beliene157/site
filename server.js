@@ -27,6 +27,7 @@ ICON_TIERS = {
 TRADUCAO = {
     "Ranked Ready":"Pronto para Ranked",
     "No rank":"Sem Rank",
+    "Unrated":"Sem Rank",
     "Iron 1":"Ferro 1",
     "Iron 2":"Ferro 2",
     "Iron 3":"Ferro 3",
