@@ -6,15 +6,14 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!res.ok) throw new Error('Falha ao buscar contas recentes');
       return res.json();
     })
-    .then(contas => {
-      const contas = res.accounts;
+    .then(response => {
+      const contas = response.accounts;
       if (!Array.isArray(contas)) throw new Error("Formato inválido");
-      
+
       contas.forEach(acc => {
         const card = document.createElement('div');
         card.className = 'account-card';
 
-        // Exemplo de estrutura (ajuste conforme sua API):
         card.innerHTML = `
           <div class="card-header">
             <img src="${acc.portrait_url}" alt="Thumbnail da conta" class="card-img" />
