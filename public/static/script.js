@@ -30,8 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Fetch account data
                     axios.get(`/api/${id}`)
                         .then(response => {
-                            const item = response.data.item;
-                            console.log(item)
+                            const item = response.data;
                             loading.classList.add('d-none');
                             accountDetails.classList.remove('d-none');
 
