@@ -105,9 +105,9 @@ app.get('/api/recentes', async (req, res) => {
     }
 });
 
-// Rota padrão para a raiz
+// Nova rota padrão para a raiz
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/static/', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public/static/', 'home.html'));
 });
 
 // Catch-all for debugging 404s
