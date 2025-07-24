@@ -77,7 +77,7 @@ app.get('/api/tier-colors', (req, res) => {
 
 app.get('/api/:id', async (req, res) => {
     try {
-        const response = await axios.get(`https://prod-api.lzt.market/${req.params.id}`, {
+        const response = await axios.get(`http://botcontas.squareweb.app/accountLtz/${req.params.id}`, {
             headers: {
                 accept: 'application/json',
                 authorization: `Bearer ${process.env.LTZ_TOKEN}`
