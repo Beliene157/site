@@ -6,32 +6,35 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!res.ok) throw new Error('Falha ao buscar contas recentes');
       return res.json();
     })
-    .then(response => {
-      const contas = response.accounts;
+    .then(resposta => {
+      const contas = Object.entries(resposta);
       if (!Array.isArray(contas)) throw new Error("Formato inválido");
 
-      contas.forEach(acc => {
+      contas.forEach(([id, acc]) => {
         const card = document.createElement('div');
         card.className = 'account-card';
 
+        const lastLoginDate = new Date(acc.account_last_activity * 1000).toLocaleDateString('pt-BR');
+
         card.innerHTML = `
           <div class="card-header">
-            <img src="${acc.portrait_url}" alt="Thumbnail da conta" class="card-img" />
+            <img src="${acc.imagePreviewLinks?.direct?.weapons || 'https://via.placeholder.com/400x200?text=Sem+Imagem'}" alt="Thumbnail da conta" class="card-img" />
             <div class="rank-info">
-              <img src="${acc.content_tier_icon}" alt="Ícone de patente" class="tier-icon" />
-              <div>${acc.patent_name}</div>
+              <img src="https://www.hypecommunity.com.br/${acc.valorantRankImgPath}" alt="${acc.valorantRankTitle}" class="tier-icon" />
+              <div>${acc.valorantRankTitle}</div>
             </div>
           </div>
           <div class="card-body">
-            <p><strong>Nível:</strong> ${acc.level}</p>
-            <p><strong>VP:</strong> ${acc.valorant_points}</p>
-            <p><strong>RP:</strong> ${acc.riot_points || '-'}</p>
-            <p><strong>Skins:</strong> ${acc.skins_count}</p>
-            <p><strong>Último login:</strong> ${new Date(acc.last_login).toLocaleDateString('pt-BR')}</p>
+            <p><strong>ID Riot:</strong> ${acc.riot_id}</p>
+            <p><strong>Nível:</strong> ${acc.riot_valorant_level}</p>
+            <p><strong>VP:</strong> ${acc.riot_valorant_wallet_vp}</p>
+            <p><strong>RP:</strong> ${acc.riot_valorant_wallet_rp}</p>
+            <p><strong>Skins:</strong> ${acc.riot_valorant_skin_count}</p>
+            <p><strong>Último login:</strong> ${lastLoginDate}</p>
           </div>
           <div class="card-footer">
             <span class="price">R$ ${acc.price.toFixed(2)}</span>
-            <a href="/compra/${acc.id}" class="buy-button">Comprar</a>
+            <a href="/compra/${id}" class="buy-button">Comprar</a>
           </div>
         `;
 
