@@ -90,6 +90,21 @@ app.get('/api/:id', async (req, res) => {
     }
 });
 
+app.get('/api/recentes', async (req, res) => {
+    try {
+        const response = await axios.get(`http://botcontas.squareweb.app/accounts?page=1&per_page=12`, {
+            headers: {
+                accept: 'application/json',
+                authorization: `Bearer ${process.env.LTZ_TOKEN}`
+            }
+        });
+        res.json(response.data.accounts); // só retornamos a lista de contas diretamente
+    } catch (error) {
+        console.error('Erro ao buscar contas recentes:', error.message);
+        res.status(500).json({ error: 'Falha ao buscar contas recentes da API' });
+    }
+});
+
 // Rota padrão para a raiz
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/static/', 'index.html'));
