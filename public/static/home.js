@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
       return res.json();
     })
     .then(contas => {
+      const contas = res.accounts;
+      if (!Array.isArray(contas)) throw new Error("Formato inválido");
+      
       contas.forEach(acc => {
         const card = document.createElement('div');
         card.className = 'account-card';
