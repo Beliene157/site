@@ -4,6 +4,8 @@ const axios = require('axios');
 const app = express();
 const port = process.env.PORT || 3000;
 require('dotenv').config();
+console.log('🔐 Token LTZ:', process.env.LTZ_TOKEN);
+
 
 console.log('Serving static files from:', path.join(__dirname, 'public'));
 app.use(express.static(path.join(__dirname, 'public')))
