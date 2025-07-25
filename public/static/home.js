@@ -30,10 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
             <p><strong>VP:</strong> ${acc.riot_valorant_wallet_vp}</p>
             <p><strong>RP:</strong> ${acc.riot_valorant_wallet_rp}</p>
             <p><strong>Skins:</strong> ${acc.riot_valorant_skin_count}</p>
-            <p><strong>Último login:</strong> ${lastLoginDate}</p>
+            <p><strong>Último login:</strong> ${new Date(acc.account_last_activity * 1000).toLocaleDateString('pt-BR')}</p>
           </div>
           <div class="card-footer">
-            <span class="price">R$ ${acc.price.toFixed(2)}</span>
+            <span class="price">R$ ${acc.price ? acc.price.toFixed(2) : 'Indisponível'}</span>
             <a href="/compra/${id}" class="buy-button">Comprar</a>
           </div>
         `;
