@@ -92,16 +92,36 @@ app.get('/api/:id', async (req, res) => {
 
 app.get('/api/recentes', async (req, res) => {
     try {
-        const response = await axios.get(`http://botcontas.squareweb.app/accounts?page=1&per_page=12`, {
-            headers: {
-                accept: 'application/json',
-                authorization: `Bearer ${process.env.LTZ_TOKEN}`
-            }
-        });
-        res.json(response.data.accounts); // só retornamos a lista de contas diretamente
+        console.log('🔄 Requisitando contas recentes do FastAPI...');
+
+        const apiUrl = `http://botcontas.squareweb.app/accounts?page=1&per_page=12`;
+        const headers = {
+            accept: 'application/json',
+            authorization: `Bearer ${process.env.LTZ_TOKEN}`
+        };
+
+        console.log('➡️ URL:', apiUrl);
+        console.log('➡️ Headers:', headers);
+
+        const response = await axios.get(apiUrl, { headers });
+
+        console.log('✅ Resposta recebida do FastAPI:');
+        console.log(response.data); // Mostra todo conteúdo retornado
+
+        res.json(response.data.accounts); // Apenas a lista paginada
     } catch (error) {
-        console.error('Erro ao buscar contas recentes:', error.message);
-        res.status(500).json({ error: 'Falha ao buscar contas recentes da API' });
+        console.error('❌ Erro ao buscar contas recentes:');
+
+        if (error.response) {
+            // O servidor respondeu com erro
+            console.error('Status:', error.response.status);
+            console.error('Data:', error.response.data);
+            res.status(error.response.status).json(error.response.data);
+        } else {
+            // Erro de rede ou outro
+            console.error(error.message);
+            res.status(500).json({ error: 'Erro desconhecido ao buscar contas recentes' });
+        }
     }
 });
 
