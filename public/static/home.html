@@ -4,59 +4,66 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Hype Accounts - Home</title>
-    <link rel="stylesheet" href="static/styles.css" />
-    <script defer src="static/home.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="static/styles-home.css" />
+    <script src="/static/home.js"></script>
 </head>
 <body>
     <div class="container">
-
-        <!-- TOPO -->
-        <div style="text-align: center; margin-top: 40px;">
-            <img src="static/assets/logo.jpeg" alt="Logo" style="width: 120px; border-radius: 12px;" />
-            <h1 style="margin-top: 10px;">Hype Accounts</h1>
-            <p style="color: #ccc;">A melhor e mais confiável loja de contas para Valorant</p>
+        <div class="header">
+            <img src="static/assets/logo.jpeg" alt="Logo" class="logo" />
+            <h1>Hype Accounts</h1>
+            <p class="subtitle">A melhor e mais confiável loja de contas para Valorant</p>
         </div>
 
-        <!-- BOTÃO DE CATEGORIA -->
-        <div style="text-align: center; margin: 20px 0;">
-            <button style="background-color: #1c1c1c; border: none; padding: 10px 20px; border-radius: 6px; color: white; font-weight: bold; cursor: pointer;">
-                <img src="https://seeklogo.com/images/V/valorant-logo-FAB2CA0E55-seeklogo.com.png" alt="Valorant" style="width: 20px; vertical-align: middle; margin-right: 6px;">
+        <!-- BOTÃO DE CATEGORIA 
+        <div class="category-button">
+            <button class="valorant-button">
+                <img src="https://seeklogo.com/images/V/valorant-logo-FAB2CA0E55-seeklogo.com.png" alt="Valorant" class="valorant-icon">
                 Valorant
             </button>
+        </div> -->
+
+        <div id="loadingSpinner" class="loading-container-home">
+            <div class="spinner-border-home"></div>
         </div>
 
         <!-- LISTAGEM DAS CONTAS -->
-        <div id="contasContainer" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 20px; padding: 20px;">
-            <!-- Cards gerados por JavaScript -->
+        <div id="contasContainer" class="contas-container"></div>
+
+        <div id="pagination" class="pagination">
+            <button id="prevPage" disabled>Anterior</button>
+            <span id="pageInfo"></span>
+            <button id="nextPage">Próximo</button>
         </div>
 
         <!-- BENEFÍCIOS -->
-        <div style="display: flex; justify-content: center; gap: 20px; margin-top: 40px; flex-wrap: wrap;">
-            <div style="background: #111; padding: 20px; border-radius: 12px; flex: 1; min-width: 240px; text-align: center;">
-                <div style="font-size: 30px;">🛡️</div>
+        <div class="benefits">
+            <div class="benefit-card">
+                <div class="benefit-icon">🛡️</div>
                 <h3>Segurança Garantida</h3>
                 <p>Todas as contas são verificadas e garantidas</p>
             </div>
-            <div style="background: #111; padding: 20px; border-radius: 12px; flex: 1; min-width: 240px; text-align: center;">
-                <div style="font-size: 30px;">⚡</div>
+            <div class="benefit-card">
+                <div class="benefit-icon">⚡</div>
                 <h3>Entrega Instantânea</h3>
-                <p>Dados da conta - <span style="color: #0ff;">Imediatamente</span> após a compra</p>
+                <p>Dados da conta - <span class="highlight">Imediatamente</span> após a compra</p>
             </div>
-            <div style="background: #111; padding: 20px; border-radius: 12px; flex: 1; min-width: 240px; text-align: center;">
-                <div style="font-size: 30px;">🎧</div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🎧</div>
                 <h3>Suporte 24/7</h3>
                 <p>Atendimento rápido e eficiente pelo Discord</p>
             </div>
         </div>
 
         <!-- BOTÃO DO DISCORD -->
-        <div style="text-align: center; margin: 30px 0;">
-            <a href="https://discord.gg/9N4zPMXRza" target="_blank" style="background-color: #5865F2; color: white; padding: 12px 24px; border-radius: 8px; font-weight: bold; text-decoration: none; display: inline-block;">
-                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord" style="width: 20px; vertical-align: middle; margin-right: 8px;">
-                Acesse Nosso Discord
+        <div class="discord-button">
+            <a href="https://discord.gg/T435Ajj9Ba" class="discord-link">
+                <i class="fab fa-discord discord-icon"></i> Acesse Nosso Discord
             </a>
         </div>
-
     </div>
 </body>
 </html>
