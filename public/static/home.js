@@ -37,10 +37,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div> -->
                 </div>
-                <div class="id-button">
-                    <button class="id-link" onclick="navigator.clipboard.writeText('${accountId}')"><i class="fab fa-discord discord-icon"></i> Copiar ID</button>
+                <div class="action-button">
+                    <button class="id-link" onclick="navigator.clipboard.writeText('${accountId}')"><i class="fas fa-copy"></i> Copiar ID</button>
                 </div>
-                <div class="discord-button">
+                <div class="action-button">
                     <a href="https://discord.gg/T435Ajj9Ba" class="discord-link"><i class="fab fa-discord discord-icon"></i> Acesse Nosso Discord</a>
                 </div>
             </div>
@@ -64,14 +64,14 @@ document.addEventListener('DOMContentLoaded', () => {
         loadingSpinner.style.display = 'flex';
         container.style.display = 'none';
         container.innerHTML = '';
-        axios.get(/api/accounts?page=${page}&limit=8)
+        axios.get(`/api/accounts?page=${page}&limit=8`)
             .then(res => {
                 console.log('Resposta recebida:', res.data);
                 const { accounts, totalPages } = res.data;
                 if (!Array.isArray(accounts)) throw new Error("Formato inválido");
 
                 total_Pages = totalPages || 1;
-                pageInfo.textContent = Página ${page} de ${total_Pages};
+                pageInfo.textContent = `Página ${page} de ${total_Pages}`;
 
                 prevPageBtn.disabled = page === 1;
                 nextPageBtn.disabled = page === total_Pages;
