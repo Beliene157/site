@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevPageBtn = document.getElementById('prevPage');
     const nextPageBtn = document.getElementById('nextPage');
     const pageInfo = document.getElementById('pageInfo');
-    let currentPage = 1;kjhgvg
+    let currentPage = 1;
     let total_Pages = 1;
 
     // Função para criar e exibir o modal
