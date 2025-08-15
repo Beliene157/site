@@ -142,6 +142,16 @@ body {
     display: inline-block;
 }
 
+.id-link {
+    background-color: #f5c33c;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+}
+
 .discord-icon {
     font-size: 20px;
     vertical-align: middle;
