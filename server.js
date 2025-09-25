@@ -33,7 +33,7 @@ app.get('/api/lucro/:id', async (req, res) => {
 
 app.get('/api/accounts', async (req, res) => {
     try {
-        const response = await axios.get(`https://apigeral.squareweb.app/account/search?${req._parsedUrl.query}&db_name=general`, {
+        const response = await axios.get(`https://apigeral.squareweb.app/account/search?${req._parsedUrl.query}&db_name=hype`, {
             headers: {
                 accept: 'application/json',
                 Authorization: `Bearer ${process.env.API_TOKEN}`
