@@ -18,7 +18,7 @@ app.get('/favicon.ico', (req, res) => {
 
 app.get('/api/lucro/:id', async (req, res) => {
     try {
-        const response = await axios.get(`https://apigeral.squareweb.app/account/lucro?id=${req.params.id}`, {
+        const response = await axios.get(`https://apigeral.squareweb.app/account/lucro?id=${req.params.id}&db_name=hype`, {
             headers: {
                 accept: 'application/json',
                 Authorization: `Bearer ${process.env.API_TOKEN}`
